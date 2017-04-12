@@ -13,16 +13,7 @@
     //[super init];
     contentText=@"";
     mainRecipients=@"";
-    
-    
-    
-    
-    
-    
-    
-    ///
-    
-    ///
+    //TestGit
     return self;
     
     
