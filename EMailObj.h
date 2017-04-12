@@ -16,6 +16,7 @@
     NSString *mainRecipients;
     NSArray *filepatharray;
     NSString *subtitle;
+    
 }
 - (id)init;
 -(void)createNewEmail:(UIViewController *)target subtitle:(NSString *)_subtitle contentText:(NSString *)_contentText mainRecipients:(NSString *)_mainRecipients filepathArray:(NSArray *)_filepatharray;
