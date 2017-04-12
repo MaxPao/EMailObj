@@ -13,7 +13,20 @@
     //[super init];
     contentText=@"";
     mainRecipients=@"";
+    
+    
+    
+    
+    
+    
+    
+    ///
+    
+    ///
     return self;
+    
+    
+    
 }
 -(void)createNewEmail:(UIViewController *)target subtitle:(NSString *)_subtitle contentText:(NSString *)_contentText mainRecipients:(NSString *)_mainRecipients filepathArray:(NSArray *)_filepatharray{
     subtitle=_subtitle;
