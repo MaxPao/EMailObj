@@ -45,7 +45,7 @@
 }
 //可以发送邮件的话  
 -(void)Email_displayComposerSheet{  
-    MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];  
+    mailPicker = [[MFMailComposeViewController alloc] init];
     mailPicker.mailComposeDelegate = self;  
 	
     //设置主题  
@@ -72,10 +72,12 @@
 	
     NSString *emailBody = contentText;
     //@"<font color='black'>Welcome any suggestions to me</font><BR/><font style='color:#990088'></font>";  
-    [mailPicker setMessageBody:emailBody isHTML:YES];  
-	[tagView presentModalViewController:mailPicker animated:YES];
+    [mailPicker setMessageBody:emailBody isHTML:YES];
+    [tagView presentViewController:mailPicker animated:YES completion:nil];
+    [mailPicker setDelegate:self];
+	//[tagView presentModalViewController:mailPicker animated:YES];
     //[mailPicker release];  
-}  
+}
 -(void)Email_launchMailAppOnDevice  
 {  
     NSString *recipients = @"";//@"mailto:mixertower@gmail.com&subject=my email!";  
@@ -106,10 +108,18 @@
         default:  
             break;  
     }
-    UIAlertView *yy=[[UIAlertView alloc] initWithTitle:@"E-Mail" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [yy show];
+    UIAlertController *_alt=[UIAlertController alertControllerWithTitle:@"E-Mail" message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *_actOK=[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [mailPicker dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [_alt addAction:_actOK];
+    [mailPicker presentViewController:_alt animated:YES completion:nil];
+    
+//    UIAlertView *yy=[[UIAlertView alloc] initWithTitle:@"E-Mail" message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [yy show];
     //[yy release];
-    [tagView dismissModalViewControllerAnimated:YES];
+    //[tagView dismissViewControllerAnimated:YES completion:nil];
+    //[tagView dismissModalViewControllerAnimated:YES];
 }  
 
 

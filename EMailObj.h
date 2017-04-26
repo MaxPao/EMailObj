@@ -10,13 +10,13 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
-@interface EMailObj : NSObject<MFMailComposeViewControllerDelegate>{
+@interface EMailObj : NSObject<MFMailComposeViewControllerDelegate,UINavigationControllerDelegate>{
     UIViewController *tagView;
     NSString *contentText;
     NSString *mainRecipients;
     NSArray *filepatharray;
     NSString *subtitle;
-    
+    MFMailComposeViewController *mailPicker;
 }
 - (id)init;
 -(void)createNewEmail:(UIViewController *)target subtitle:(NSString *)_subtitle contentText:(NSString *)_contentText mainRecipients:(NSString *)_mainRecipients filepathArray:(NSArray *)_filepatharray;
